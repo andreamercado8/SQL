@@ -1,0 +1,20 @@
+# Below are challenges I have worked on to advance my SQL skills.
+
+# 05/13/23
+  # Write an SQL query to find the ids of products that are both low fat and recyclable.
+  SELECT product_id
+  FROM Products
+    WHERE low_fats = 'Y'
+    AND recyclable = 'Y';
+
+  # Write an SQL query to show the unique ID of each user, If a user does not have a unique ID replace just show null.
+  SELECT Uni.unique_id, Emp.name
+  FROM Employees AS Emp
+    LEFT JOIN EmployeeUNI AS Uni
+    ON Emp.id = Uni.id;
+  
+  # Write an SQL query to find the IDs of the invalid tweets.
+  # The tweet is invalid if the number of characters used in the content of the tweet is strictly greater than 15.
+  SELECT tweet_id
+  FROM Tweets
+    WHERE CHAR_LENGTH(content) > 15;
