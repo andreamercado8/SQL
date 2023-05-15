@@ -1,5 +1,38 @@
 # Below are challenges I have worked on to advance my SQL skills.
 
+# 05/15/23
+  # Write an SQL query to report the number of unique subjects each teacher teaches in the university.
+  SELECT teacher_id, COUNT(distinct subject_id) AS cnt
+  FROM Teacher
+  GROUP BY teacher_id
+  
+  # Write an SQL query that will, for each date_id and make_name, return the number of distinct lead_id's and distinct partner_id's.
+  SELECT date_id
+        , make_name
+        , COUNT(DISTINCT lead_id) AS "unique_leads"
+        , COUNT(DISTINCT partner_id) AS "unique_partners"
+  FROM DailySales
+  GROUP BY date_id, make_name;
+  
+  # Write an SQL query to rearrange the Products table so that each row has (product_id, store, price). If a product is not available in a store, do not include a row with that product_id and store combination in the result table.
+  SELECT product_id
+    , "store1" AS store
+    , store1 AS price
+  FROM Products
+  WHERE store1 IS NOT NULL
+  UNION
+  SELECT product_id
+    , "store2" AS store
+    , store2 AS price
+  FROM Products
+  WHERE store2 IS NOT NULL
+  UNION
+  SELECT product_id
+    , "store3" AS store
+    , store3 AS price
+  FROM Products
+  WHERE store3 IS NOT NULL;
+
 # 05/13/23
   # Write an SQL query to find the ids of products that are both low fat and recyclable.
   SELECT product_id
